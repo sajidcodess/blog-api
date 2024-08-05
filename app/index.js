@@ -1,6 +1,10 @@
 const bodyParser = require('body-parser')
 const express = require("express");
+const { connectDB } = require('./config/db');
 const app = express();
+
+// connect to MongoDB 
+connectDB()
 
 app.use(bodyParser.json)
 
