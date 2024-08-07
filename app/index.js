@@ -1,19 +1,20 @@
-const bodyParser = require('body-parser')
 const express = require("express");
-const { connectDB } = require('./config/db');
+const connectDB = require("./config/db.js");
+const authRouter = require("./routes/auth.router.js");
+
 const app = express();
 
-// connect to MongoDB 
-connectDB()
+// connect to MongoDB
+connectDB();
 
-app.use(bodyParser.json)
+app.use(express.json())
 
-app.get("/", (req, res) => {
-  res.send(`req: ${req} and res: ${res}`);
-});
+app.use("/api/auth", authRouter);
 
-app.post("/", (req, res) => {
-  res.send("received post request")
+app.get('/', (req, res) => {
+  res.send('heeyeye')
 })
 
-module.exports = app
+
+
+module.exports = app;
