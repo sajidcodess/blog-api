@@ -1,5 +1,5 @@
 {
-  "name": "ecommerce-api",
+  "name": "blog-api",
   "version": "1.0.0",
   "description": "An API to build E-commerce store",
   "main": "server.js",
@@ -8,7 +8,7 @@
     "dev": "nodemon server.js"
   },
   "keywords": [
-    "ecommerce",
+    "blog",
     "api"
   ],
   "author": "Muhammad Sajid => (@sajidcodess) in github",
