@@ -17,7 +17,16 @@ async function register(req, res) {
         .status(401)
         .json({ success: false, error: "The access tokan has expired" });
     }
-    res.status(400).json({ success: false, error: error.message });
+    res.status(400).json({
+      success: false,
+      error: error.message,
+      requiredFormat: "JSON",
+      Example: {
+        username: "nick",
+        email: "example@gmail.com",
+        password: "123four",
+      },
+    });
   }
 }
 
@@ -37,7 +46,15 @@ async function login(req, res) {
 
     res.status(200).json({ success: true, token });
   } catch (error) {
-    res.status(400).json({ success: false, error: error.message });
+    res.status(400).json({
+      success: false,
+      error: error.message,
+      requiredFormat: "JSON",
+      Example: {
+        email: "example@gmail.com",
+        password: "123four",
+      },
+    });
   }
 }
 
