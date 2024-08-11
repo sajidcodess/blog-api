@@ -16,7 +16,7 @@ const userSchema = new Schema({
     },
   },
   password: { type: String, required: true, minlength: 6 },
-  varified: { type: Boolean, default: false },
+  verified: { type: Boolean, default: false },
 });
 
 userSchema.pre("save", async function (next) {

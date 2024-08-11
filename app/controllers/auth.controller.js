@@ -28,7 +28,7 @@ async function register(req, res) {
       success: true,
       message:
         "To complete your registration, we've sent you a verification email. Please click the link in the email to verify your account.",
-    });
+     token });
   } catch (error) {
     res.status(400).json({
       success: false,
@@ -54,10 +54,11 @@ async function login(req, res) {
         .json({ success: false, Error: "invalid credentials" });
     }
 
-    if (!user.varified) {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
         expiresIn: "1d",
       });
+
+    if (!user.verified) {
       const verificationLink = `${req.hostname}/api/auth/verify-email?token=${token}`;
       verifyEmailbyNodeMailer(user.email, verificationLink);
       return res.status(401).json({
@@ -67,7 +68,7 @@ async function login(req, res) {
       });
     }
 
-    res.status(200).json({ success: true, message: "successfully logged in" });
+    res.status(200).json({ success: true, message: "successfully logged in", token });
   } catch (error) {
     res.status(400).json({
       success: false,
@@ -89,7 +90,7 @@ async function verifyEmail(req, res) {
     if (!user) {
       return res.status(400).json({ success: false, error: "Invalid Token" });
     }
-    user.varified = true;
+    user.verified = true;
     await user.save();
 
     res
