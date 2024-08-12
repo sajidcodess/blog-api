@@ -3,7 +3,6 @@ const userModel = require("../models/user.model");
 
 async function authMiddleware(req, res, next) {
   try {
-    console.log(req.headers)
     const token =
       req.headers.authorization && req.headers.authorization.split(" ")[1];
     if (!token) {
@@ -27,11 +26,12 @@ async function authMiddleware(req, res, next) {
         });
     }
 
-    console.log(user)
 
     if (!user.verified) {
       return res.status(403).json({success: false, message: "The user associated to this token in our DB has unvarifed email, please varify the email by loggin in"})
     }
+
+    req.user = user
 
     next();
   } catch (error) {
