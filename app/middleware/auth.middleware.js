@@ -10,7 +10,7 @@ async function authMiddleware(req, res, next) {
         .status(403)
         .json({
           success: false,
-          message: "JWT token not found in the headers.authorization",
+          message: "JWT token not found in the headers.authorization: if you don't have one try to login to get a fresh token",
         });
     }
 
