@@ -6,7 +6,7 @@ async function register(req, res) {
   try {
     const { username, email, password } = req.body;
 
-    const savedUser = await userModel.findOne({ email });
+    const savedUser = await userModel.exists({ email });
     if (savedUser) {
       return res.status(403).json({
         success: false,
