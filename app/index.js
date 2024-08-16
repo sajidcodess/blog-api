@@ -11,7 +11,7 @@ connectDB();
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
-app.use("/api/blog", blogRouter);
+app.use("/api/blogs", blogRouter);
 
 app.get("/", (req, res) => {
   res.send("heeyeye");
