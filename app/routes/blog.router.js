@@ -8,7 +8,7 @@ const updateBlog = require("../controllers/blog.controllers/updateBlog");
 const router = Router();
 
 router.post("/create", authMiddleware, createBlog);
-router.post("/delete/:id", authMiddleware, deleteBlog);
+router.delete("/delete/:id", authMiddleware, deleteBlog);
 router.put("/update/:id", authMiddleware, updateBlog);
 router.get("/", getBlogs);
 

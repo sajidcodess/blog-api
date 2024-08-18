@@ -3,12 +3,17 @@ const blogModel = require("../../models/blog.model");
 const deleteBlog = async (req, res) => {
   try {
     const { id } = req.params;
-    const blog = await blogModel.findByIdAndDelete(id);
+    const userId = req.user._id;
+    const blog = await blogModel.findOneAndDelete({
+      _id: id,
+      authorId: userId,
+    });
 
     if (!blog) {
       return res.status(404).json({
         success: false,
-        message: "The blog with this ID is not found",
+        message:
+          `The blog with this ID and created by author: ${req.user.username} is not found`,
       });
     }
 

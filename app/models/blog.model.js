@@ -2,7 +2,8 @@ const { Schema, default: mongoose } = require("mongoose");
 
 const blogSchema = new Schema({
   title: { type: String, required: true },
-  auther: { type: String, required: true },
+  authorId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  author: { type: String, required: true }, 
   tags: { type: [String] },
   content: { type: String, required: true },
   updatedAt: { type: Date, default: Date.now },

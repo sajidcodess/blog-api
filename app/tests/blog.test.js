@@ -17,7 +17,7 @@ describe("POST /api/blogs/create", () => {
       .set("Authorization", `Bearer ${process.env.MY_JWT}`)
       .send({
         title: "string title goes here",
-        auther: "Auther name goes here",
+        author: "Author name goes here",
         content: "content goes here",
         tags: ["one", "two", "three"],
       });

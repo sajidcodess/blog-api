@@ -16,10 +16,11 @@ const updateBlog = async (req, res) => {
       });
     }
     const { id } = req.params;
+    const userId = req.user._id;
     const { title, author, content, tags } = req.body;
 
     const blog = await blogModel.findOneAndUpdate(
-      { _id: id },
+      { _id: id, authorId: userId },
       {
         title,
         content,
@@ -35,7 +36,11 @@ const updateBlog = async (req, res) => {
     if (!blog) {
       return res
         .status(404)
-        .json({ success: false, message: "Blog with this ID not found" });
+        .json({
+          success: false,
+          message:
+           `The blog with this ID and created by author: ${req.user.username} is not found`,
+        });
     }
 
     res.status(200).json({
