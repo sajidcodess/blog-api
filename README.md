@@ -1,14 +1,14 @@
 # Blog API
 
 ## Overview
-This project provides a robust RESTful API designed to power a blogging platform. It offers essential features for creating, reading, updating, and deleting (CRUD) blog posts while ensuring secure user management through email-based authentication and authorization.
+This project provides a RESTful API designed to power a blogging platform. It offers essential features for creating, reading, updating, and deleting (CRUD) blog posts while ensuring secure user management through email-based authentication and authorization.
 
 ### Key Features:
 - **User Authentication & Authorization:** Secure user registration, login, and email verification to protect user accounts and content.
 - **Blog Management:** Full CRUD operations for blog posts, allowing users to create, edit, update, and delete their own content.
 - **Role-Based Access Control:** Ensures that only authenticated and verified users can manage their blogs, with appropriate access restrictions in place.
 - **Data Validation:** Enforces data integrity by validating inputs, ensuring that only correctly formatted data is accepted by the API.
-- **Security:** Implements industry-standard security practices, including password hashing and JWT tokens, to protect user data and API endpoints.
+- **Security:** Implements security practices, including password hashing and JWT tokens, to protect user data and API endpoints.
 
 This API serves as the backend for a blogging website and can be easily integrated into front-end applications or extended with additional features to suit your project's needs.
 
